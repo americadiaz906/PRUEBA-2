@@ -23,6 +23,9 @@
                 <h1>Dominó Numérico</h1>
             </div>
             <div class="header-buttons">
+                <button id="btn-mute" class="btn btn-secondary btn-icon" title="Silenciar Sonido">
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
                 <button id="btn-pedagogic" class="btn btn-secondary btn-icon" title="Guía Pedagógica NEM">
                     <i class="fa-solid fa-graduation-cap"></i> <span>NEM Fase 2</span>
                 </button>
@@ -82,7 +85,13 @@
                             <span class="badge-avatar" id="current-avatar">🐻</span>
                             <span class="badge-name" id="current-name">Jugador 1</span>
                         </div>
-                        <div class="turn-bubble">¡Es tu turno de buscar parejas!</div>
+                        <div class="turn-bubble-container">
+                            <div class="turn-bubble">¡Es tu turno de buscar parejas!</div>
+                            <div class="timer-bar-container" id="timer-container" title="Tiempo de tu turno">
+                                <div class="timer-progress" id="timer-progress"></div>
+                                <span class="timer-emoji" id="timer-emoji">🐢</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Boneyard (Pozo) -->
