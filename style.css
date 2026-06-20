@@ -1094,3 +1094,115 @@ body {
     0% { top: -20px; opacity: 1; transform: rotate(0deg); }
     100% { top: 100%; opacity: 0.3; transform: rotate(360deg) translateX(50px); }
 }
+
+/* ==========================================================================
+   INTERACTIVE AND DYNAMIC GAME IMPROVEMENTS (SOUNDS, ANIMATIONS, TIMER, ETC.)
+   ========================================================================== */
+
+/* Estilo para el botón de silenciar */
+#btn-mute {
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+}
+
+/* Contenedor del globo de turno y el temporizador */
+.turn-bubble-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+/* Temporizador Lúdico Infantil */
+.timer-bar-container {
+    width: 220px;
+    height: 14px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    position: relative;
+    border: 2px solid white;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    margin-left: 10px;
+    overflow: visible; /* Permitir que el emoji sobresalga arriba */
+}
+
+.timer-progress {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #22c55e 0%, #eab308 60%, #ef4444 100%);
+    border-radius: 20px;
+    transition: width 0.1s linear;
+}
+
+.timer-emoji {
+    position: absolute;
+    top: -6px;
+    left: 100%;
+    font-size: 1.2rem;
+    transform: translateX(-50%);
+    transition: left 0.1s linear;
+    pointer-events: none;
+}
+
+/* Avatares Animados */
+.avatar-active {
+    animation: bounceAvatar 0.6s infinite alternate cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: inline-block;
+}
+
+.avatar-excited {
+    animation: bounceAvatarExcited 0.5s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: inline-block;
+}
+
+.avatar-winner-spin {
+    animation: winTrophy 2s infinite ease-in-out, spinWinner 1.5s ease-out forwards;
+    display: inline-block;
+}
+
+@keyframes bounceAvatar {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-10px) scale(1.05); }
+}
+
+@keyframes bounceAvatarExcited {
+    0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+    50% { transform: translateY(-16px) scale(1.1) rotate(5deg); }
+}
+
+@keyframes spinWinner {
+    0% { transform: rotate(0deg) scale(0.2); }
+    100% { transform: rotate(360deg) scale(1.2); }
+}
+
+/* Partículas de destellos/estrellas */
+.game-particle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 1.5rem;
+    z-index: 99;
+    animation: particleAnimation 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes particleAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.2) rotate(var(--rot));
+        opacity: 0;
+    }
+}
+
+/* Ficha voladora / animada */
+.flying-tile {
+    position: fixed;
+    z-index: 999;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+}
